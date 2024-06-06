@@ -52,7 +52,7 @@ const Login = () => {
               >
                 <div>
                   <label
-                    htmlFor=""
+                    htmlFor="email" // added
                     className="text-sm font-bold text-gray-600 block"
                   >
                     Email
@@ -69,7 +69,7 @@ const Login = () => {
                 </div>
                 <div>
                   <label
-                    htmlFor=""
+                    htmlFor="password" // added
                     className="text-sm font-bold text-gray-600 block"
                   >
                     Password
