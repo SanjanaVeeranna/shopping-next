@@ -11,7 +11,8 @@ interface FormData {
   remember: boolean;
 }
 
-const login = () => {
+const Login = () => {
+  // changed the name from login to Login also changed the folder name from from Login to login
   const router = useRouter();
   const {
     register,
@@ -51,7 +52,7 @@ const login = () => {
               >
                 <div>
                   <label
-                    htmlFor=""
+                    htmlFor="email" // added
                     className="text-sm font-bold text-gray-600 block"
                   >
                     Email
@@ -68,7 +69,7 @@ const login = () => {
                 </div>
                 <div>
                   <label
-                    htmlFor=""
+                    htmlFor="password" // added
                     className="text-sm font-bold text-gray-600 block"
                   >
                     Password
@@ -120,4 +121,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login; // changed the name from login to Login
