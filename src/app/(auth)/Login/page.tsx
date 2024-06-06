@@ -11,7 +11,8 @@ interface FormData {
   remember: boolean;
 }
 
-const login = () => {
+const Login = () => {
+  // changed the name from login to Login also changed the folder name from from Login to login
   const router = useRouter();
   const {
     register,
@@ -120,4 +121,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login; // changed the name from login to Login

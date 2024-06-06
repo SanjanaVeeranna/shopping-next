@@ -7,7 +7,8 @@ import { AiFillProduct } from "react-icons/ai";
 import { MdCollections } from "react-icons/md";
 type active = "content" | "product" | "collection";
 
-const homeMain = () => {
+const Home = () => {
+  // changed The name from homeMain to Home also changing the folder name name from Home to home
   const [selected, setSelected] = useState<active>("content");
   return (
     <div>
@@ -42,7 +43,8 @@ const homeMain = () => {
           >
             <div className="border-4 border-solid border-black rounded-lg p-2">
               <h2 className="text-2xl font-bold mb-4 text-center">
-                MEN'S FASHION
+                MEN&apos;S FASHION{" "}
+                {/* using &apos; this for single quote (') */}
               </h2>
               <Image
                 className="rounded-xl "
@@ -60,7 +62,8 @@ const homeMain = () => {
           >
             <div className="border-4 border-solid border-black rounded-lg p-2">
               <h2 className="text-2xl font-bold mb-4 text-center">
-                KID'S FASHION
+                KID&apos;S FASHION{" "}
+                {/* using &apos; this for single quote (') */}
               </h2>
               <Image
                 className="rounded-xl "
@@ -78,7 +81,8 @@ const homeMain = () => {
           >
             <div className="border-4 border-solid border-black rounded-lg p-2">
               <h2 className="text-2xl font-bold mb-4 text-center">
-                WOMEN'S FASHION
+                WOMEN&apos;S FASHION{" "}
+                {/* using &apos; this for single quote (') */}
               </h2>
               <Image
                 className="rounded-xl "
@@ -257,4 +261,4 @@ const homeMain = () => {
   );
 };
 
-export default homeMain;
+export default Home;
