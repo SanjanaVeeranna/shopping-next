@@ -13,7 +13,7 @@ const Profile = () => {
   const Home = () => {
     return (
       <div>
-        <div className="flex flex-row  m-10">
+        <div className="flex flex-row  p-10">
           <Image
             className="rounded-xl "
             src="/Images/Background/background1.webp"
@@ -37,7 +37,7 @@ const Profile = () => {
           </div>
         </div>
         <div>
-          <div className="flex flex-row justify-between ml-16 mr-16 font-bold space-x-8">
+          <div className="flex flex-row justify-between pl-16 pr-16 font-bold space-x-8">
             <Link
               className="navbar_link relative hover:bg-gray-100 hover:shadow-md transition duration-300 ease-in-out"
               href="/men-wear"
