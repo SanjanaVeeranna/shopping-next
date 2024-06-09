@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaBoxOpen, FaShoppingBag } from "react-icons/fa";
 import { AiFillProduct } from "react-icons/ai";
 import { MdCollections } from "react-icons/md";
+import HeaderTop from "@/components/HeaderTop";
 type active = "content" | "product" | "collection";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
   const [selected, setSelected] = useState<active>("content");
   return (
     <div>
+      <HeaderTop />
       <div className="flex flex-row  p-10">
         <Image
           className="rounded-xl "
