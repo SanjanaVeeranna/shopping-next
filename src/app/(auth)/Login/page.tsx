@@ -1,19 +1,21 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { RiFlowerFill } from "react-icons/ri";
+import Link from "next/link";
+import { BiLogInCircle, BiMessage } from "react-icons/bi";
+import { BsInstagram } from "react-icons/bs";
 
 interface FormData {
   email: string;
   password: string;
-  remember: boolean;
 }
 
 const Login = () => {
-  // changed the name from login to Login also changed the folder name from from Login to login
   const router = useRouter();
+  const [isChecked, setIsChecked] = useState(false);
   const {
     register,
     handleSubmit,
@@ -22,91 +24,127 @@ const Login = () => {
 
   const onSubmit = (data: FormData) => {
     console.log(data);
-  };
-
-  const onError = (errors: any) => {
-    console.log(errors);
+    router.push("/home"); // redirect to home page
   };
 
   return (
     <div>
-      <div className="flex flex-row">
-        <div className="p-10 mt-16">
-          <div className="flex flex-row pl-32 ">
-            <RiFlowerFill size={100} />
-            <div className="pl-2 mt-5 font-bold text-6xl ">PRO-FASHION</div>
-          </div>
-          <div className="pl-16 font-bold">
-            WELCOME TO PRO-FASION. REGISTER NOW AND SHOP WITHOUT ANY EFFORTS...
-          </div>
-          <div className="h-[380px] bg-gray-50 flex flex-col justify-center">
-            <div className="max-w-md w-full mx-auto">
-              <div className="text-3xl font-bold text-gray-900 mt-2 text-center">
-                LOGIN HERE
+      <div className="flex flex-row pl-64">
+        <div className="pr-16">
+          <div className="flex flex-col ">
+            <div className=" flex flex-row pt-16 pb-4 gap-x-64 ">
+              <div className="flex flex-row gap-x-2 text-xs font-bold text-red">
+                <div>Pro-Fasion</div>
+                <RiFlowerFill size={15} />
+              </div>
+              <div>
+                <BiLogInCircle
+                  size={20}
+                  color={isChecked ? "green" : "red"} // conditional styling
+                />
               </div>
             </div>
-            <div className="max-w-md w-full mx-auto mt-4 bg-white p-8 border border-gray-300">
-              <form
-                onSubmit={handleSubmit(onSubmit)} // Add onError callback
-                className="space-y-6"
-              >
-                <div>
-                  <label
-                    htmlFor="email" // added
-                    className="text-sm font-bold text-gray-600 block"
-                  >
-                    Email
-                  </label>
-                  <input
-                    {...register("email", {
-                      required: true,
-                      minLength: 6,
-                      maxLength: 20,
-                    })}
-                    type="text"
-                    className="w-full p-2 border border-gray-300 rounded mt-1"
-                  />
+            <hr className="border-gray-400 h-6" />
+            <div>
+              <div className="pb-6">
+                <div className="text-[25px] font-bold">
+                  Sign in to ProFasion
                 </div>
-                <div>
-                  <label
-                    htmlFor="password" // added
-                    className="text-sm font-bold text-gray-600 block"
-                  >
-                    Password
-                  </label>
-                  <input
-                    {...register("password", { required: true })}
-                    type="password"
-                    className="w-full p-2 border border-gray-300 rounded mt-1"
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <input
-                      {...register("remember")}
-                      type="checkbox"
-                      className="h-4 w-4 text-blue-300 rounded"
-                    />
-                    <label htmlFor="" className="ml-2 text-sm text-gray-600">
-                      Remember me
-                    </label>
-                  </div>
+                <div className="flex flex-row justify-between pt-1">
+                  <div className="text-xs pt-2">Don't have an account?</div>
                   <div>
-                    <a href="" className="font-medium text-sm text-blue-500">
-                      Forgot Password?
-                    </a>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => router.push("/home")}
-                      className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm"
+                    <Link
+                      href="/signup"
+                      className="text-xs text-red font-bold hover:text-black "
                     >
-                      Submit
-                    </button>
+                      Sign up
+                    </Link>
                   </div>
                 </div>
-              </form>
+              </div>
+              <hr className="border-gray-400 h-6" />
             </div>
+          </div>
+          <div className="mx-auto mt-4 ml-2 mr-2 pb-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="text-sm font-bold text-black block"
+                ></label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Full Name"
+                  className="w-full p-2 border border-gray-300 rounded-lg mt-1"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="text-sm font-bold text-gray-600 block"
+                ></label>
+                <input
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    maxLength: 30,
+                  })}
+                  type="text"
+                  id="email"
+                  placeholder="Enter Email Address"
+                  className="w-full p-2 border border-gray-300 rounded-lg mt-1"
+                />
+                {errors.email && (
+                  <div className="text-xs text-red">
+                    {errors.email.type === "required"
+                      ? "Email is required"
+                      : "Enter a valid email address"}
+                  </div>
+                )}
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  className="text-sm font-bold text-gray-600 block"
+                ></label>
+                <input
+                  {...register("password", { required: true })}
+                  type="password"
+                  id="password"
+                  placeholder="Enter Password"
+                  className="w-full p-2 border border-gray-300 rounded-lg mt-1"
+                />
+              </div>
+              <div>
+                <button className="w-full p-2 border border-gray-300 rounded-lg mt-1 bg-red text-white">
+                  Continue
+                </button>
+              </div>
+              <hr className="border-gray-400" />
+              <div className="pl-36 text-grey text-sm">--OR--</div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="w-[250px] p-2 gap-x-2 rounded-lg mt-1 text-xs font-bold text-black flex flex-row pl-14 bg-skin">
+                    <Image
+                      src="/googlelogo.png"
+                      width={15}
+                      height={15}
+                      alt="Google Logo"
+                    />
+                    <div>Sign in with Google</div>
+                  </div>
+                </div>
+                <div className="flex flex-row gap-x-4 ">
+                  <div className="rounded-lg mt-1 bg-skin p-2">
+                    <BsInstagram size={15} />
+                  </div>
+                  <div className="rounded-lg mt-1 bg-skin p-2">
+                    <BiMessage size={15} />
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
         <Image

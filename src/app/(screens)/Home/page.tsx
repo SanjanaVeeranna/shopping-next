@@ -7,21 +7,65 @@ import { AiFillProduct } from "react-icons/ai";
 import { MdCollections } from "react-icons/md";
 import HeaderTop from "@/components/HeaderTop";
 type active = "content" | "product" | "collection";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css/autoplay";
 
 const Home = () => {
   // changed The name from homeMain to Home also changing the folder name name from Home to home
   const [selected, setSelected] = useState<active>("content");
+  const images = [
+    "https://dhunkifashion.com/wp-content/uploads/2020/05/history-of-indian-ethnic-wear-1.jpg",
+
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz_pkzv7m1QyXcfCRbsYFUCquDtNSjBMaTGx4YVBb-G2XmVOog-U3b9M0D_IG1iuN36Os&usqp=CAU",
+
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIDXteWgHwTBFgQtpC0hFul6S_QD34JDZe_JA_P-Vk1f08Ablz6xOeG5ezfeFFTXFKDwM&usqp=CAU",
+  ];
   return (
     <div>
       <HeaderTop />
       <div className="flex flex-row  p-10">
-        <Image
-          className="rounded-xl "
-          src="/Images/Background/background1.webp"
-          alt=""
-          width={900}
-          height={500}
-        />
+        <div className=" flex justify-center items-center">
+          <div className="flex h-96 w-[600px]  ">
+            <Swiper
+              slidesPerView={1}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              onSlideChange={(swiper) => {
+                console.log(swiper.activeIndex);
+              }}
+              loop={true}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              modules={[Pagination, Navigation, Autoplay]}
+              className="mySwiper !z-[0] mx-5 mb-2 flex items-center justify-center overflow-x-scroll rounded-2xl shadow-[3px_3px_0px_0px_#000000]"
+            >
+              {images.map((img: string, index: number) => {
+                return (
+                  <SwiperSlide
+                    className="!z-[0] rounded-2xl shadow-[3px_3px_0px_0px_#000000]"
+                    key={index}
+                  >
+                    <Image
+                      width={335}
+                      height={425}
+                      alt="creator-image"
+                      src={img}
+                      className="flex aspect-[4/4] h-full w-full"
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        </div>
         <div>
           <div className="mt-10">
             <div className="ml-16 font-bold text-6xl ">
