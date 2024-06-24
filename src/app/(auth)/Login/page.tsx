@@ -51,7 +51,9 @@ const Login = () => {
                   Sign in to ProFasion
                 </div>
                 <div className="flex flex-row justify-between pt-1">
-                  <div className="text-xs pt-2">Don't have an account?</div>
+                  <div className="text-xs pt-2">
+                    Don&apos;t have an account?
+                  </div>
                   <div>
                     <Link
                       href="/signup"
