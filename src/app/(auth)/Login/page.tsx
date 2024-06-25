@@ -150,11 +150,11 @@ const Login = () => {
           </div>
         </div>
         <Image
-          className="pl-12 pr-18 mt-3 "
+          className="ml-12 pr-18 m-3 rounded-lg  "
           src="/Images/loginbackground.webp"
           alt=""
-          width={580}
-          height={500}
+          width={560}
+          height={300}
         />
       </div>
     </div>

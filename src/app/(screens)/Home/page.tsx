@@ -29,7 +29,7 @@ const Home = () => {
       <HeaderTop />
       <div className="flex flex-row  p-10">
         <div className=" flex justify-center items-center">
-          <div className="flex h-96 w-[600px]  ">
+          <div className="flex h-96 w-[800px]  ">
             <Swiper
               slidesPerView={1}
               autoplay={{
@@ -45,14 +45,11 @@ const Home = () => {
               }}
               navigation={true}
               modules={[Pagination, Navigation, Autoplay]}
-              className="mySwiper !z-[0] mx-5 mb-2 flex items-center justify-center overflow-x-scroll rounded-2xl shadow-[3px_3px_0px_0px_#000000]"
+              className="mySwiper !z-[0] mx-5 mb-2 flex items-center justify-center overflow-x-scroll rounded-2xl "
             >
               {images.map((img: string, index: number) => {
                 return (
-                  <SwiperSlide
-                    className="!z-[0] rounded-2xl shadow-[3px_3px_0px_0px_#000000]"
-                    key={index}
-                  >
+                  <SwiperSlide className="!z-[0] rounded-2xl" key={index}>
                     <Image
                       width={335}
                       height={425}
@@ -60,6 +57,16 @@ const Home = () => {
                       src={img}
                       className="flex aspect-[4/4] h-full w-full"
                     />
+                    <Link
+                      target="_blank"
+                      href={
+                        "https://www.myntra.com/women-ethnic-wear?f=Categories%3ALehenga%20Choli"
+                      }
+                    >
+                      <div className="h-20 w-64 flex items-center justify-center cursor-pointer bg-white rounded-md absolute bottom-2 left-2 text-black font-bold text-sm">
+                        Click Here for Products
+                      </div>
+                    </Link>
                   </SwiperSlide>
                 );
               })}
